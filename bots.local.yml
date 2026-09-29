@@ -7,7 +7,7 @@ bots:
     region: mace_arena
     aggression: 3
     mode: attack
-    enabled: true
+    enabled: false
     target: ''
   new:
     name: new
@@ -17,7 +17,7 @@ bots:
     region: mace_arena
     aggression: 3
     mode: attack
-    enabled: true
+    enabled: false
     target: ''
   fah:
     name: fah
@@ -27,7 +27,7 @@ bots:
     region: mace_arena
     aggression: 3
     mode: attack
-    enabled: true
+    enabled: false
     target: ''
   todayweexplode:
     name: todayweexplode
@@ -37,5 +37,5 @@ bots:
     region: mace_arena
     aggression: 3
     mode: attack
-    enabled: true
+    enabled: false
     target: ''

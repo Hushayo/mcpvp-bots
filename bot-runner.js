@@ -8,6 +8,9 @@ const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
 
 const MC_HOST = process.env.MC_HOST || '15.235.212.121';
 const MC_PORT = parseInt(process.env.MC_PORT || '13247', 10);
+// Node assignment: this runner only launches bots whose entry node matches.
+// Unset NODE_NAME ("") runs unassigned bots only — wispbyte sets NODE_NAME=wispbyte.
+const NODE_NAME = process.env.NODE_NAME || '';
 const FILE = path.join(__dirname, 'bots.local.yml');
 const POLL_MS = 10_000;
 const TICK_MS = 250;
@@ -332,6 +335,12 @@ function reconcile() {
   const seen = new Set(Object.keys(entries));
   for (const [key, cfg] of Object.entries(entries)) {
     if (!cfg || !cfg.name) continue;
+    // node gate: only run bots assigned to THIS machine ("" = unassigned = local default)
+    if (String(cfg.node || '') !== NODE_NAME) {
+      const st = bots.get(key);
+      if (st) stopBot(key, st);
+      continue;
+    }
     if (cfg.enabled === false) {
       const st = bots.get(key);
       if (st) { log(cfg.name, 'disabled -> quit'); stopBot(key, st); }
@@ -349,4 +358,4 @@ function reconcile() {
 
 reconcile();
 setInterval(reconcile, POLL_MS);
-console.log(`[runner] watching ${FILE} host=${MC_HOST} port=${MC_PORT}`);
+console.log(`[runner] watching ${FILE} host=${MC_HOST} port=${MC_PORT} node='${NODE_NAME}'`);
