@@ -1,0 +1,41 @@
+bots:
+  test:
+    name: Test
+    arena: mace
+    kit: mace
+    warp: mace
+    region: mace_arena
+    aggression: 3
+    mode: attack
+    enabled: true
+    target: ''
+  new:
+    name: new
+    arena: mace
+    kit: mace
+    warp: mace
+    region: mace_arena
+    aggression: 3
+    mode: attack
+    enabled: true
+    target: ''
+  fah:
+    name: fah
+    arena: mace
+    kit: mace
+    warp: mace
+    region: mace_arena
+    aggression: 3
+    mode: attack
+    enabled: true
+    target: ''
+  todayweexplode:
+    name: todayweexplode
+    arena: mace
+    kit: mace
+    warp: mace
+    region: mace_arena
+    aggression: 3
+    mode: attack
+    enabled: true
+    target: ''
