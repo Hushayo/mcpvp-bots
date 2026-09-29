@@ -2,6 +2,8 @@
 // Java server, offline-mode: plain username, no Microsoft auth. No /login needed.
 const fs = require('fs');
 const path = require('path');
+// Load /home/container/.env when present (Wispbyte exposes env via file, not process env).
+try { require('dotenv').config(); } catch {}
 const yaml = require('js-yaml');
 const mineflayer = require('mineflayer');
 const { pathfinder, Movements, goals } = require('mineflayer-pathfinder');
